@@ -1,0 +1,41 @@
+#leaderboard {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 1em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+#leaderboard thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+}
+
+#leaderboard th,
+#leaderboard td {
+    padding: 12px 15px;
+    border-left: 1px solid #009851;
+    border-right: 1px solid #009879;
+}
+
+#leaderboard tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+#leaderboard tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+#leaderboard tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+#leaderboard tbody tr:hover {
+  color: #009879;
+}
+
+#leaderboard img{
+  width: 75px;
+  height: auto;
+}

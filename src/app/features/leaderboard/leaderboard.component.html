@@ -1,0 +1,27 @@
+<table id="leaderboard">
+  <thead>
+    <tr>
+      <th colspan="2"></th>
+      <th>Name</th>
+      <th>Games</th>
+      <th>W</th>
+      <th>L</th>
+      <th>D</th>
+      <th>Goal Difference</th>
+      <th>Points</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let standinginfo of standing$ | async; index as i">
+      <td>{{ standinginfo.rank }}</td>
+      <td><img [src]="standinginfo.team.logo" /></td>
+      <td>{{ standinginfo.team.name }}</td>
+      <td>{{ standinginfo.all.played }}</td>
+      <td>{{ standinginfo.all.win }}</td>
+      <td>{{ standinginfo.all.lose }}</td>
+      <td>{{ standinginfo.all.draw }}</td>
+      <td>TODO</td>
+      <td>{{ standinginfo.points }}</td>
+    </tr>
+  </tbody>
+</table>
