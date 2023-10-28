@@ -12,16 +12,16 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let standinginfo of standing$ | async; index as i">
-      <td>{{ standinginfo.rank }}</td>
-      <td><img [src]="standinginfo.team.logo" /></td>
-      <td>{{ standinginfo.team.name }}</td>
-      <td>{{ standinginfo.all.played }}</td>
-      <td>{{ standinginfo.all.win }}</td>
-      <td>{{ standinginfo.all.lose }}</td>
-      <td>{{ standinginfo.all.draw }}</td>
+    <tr *ngFor="let standingInfo of majorLeagueData.standings">
+      <td>{{ standingInfo.rank }}</td>
+      <td><img [src]="standingInfo.team.logo" /></td>
+      <td>{{ standingInfo.team.name }}</td>
+      <td>{{ standingInfo.all.played }}</td>
+      <td>{{ standingInfo.all.win }}</td>
+      <td>{{ standingInfo.all.lose }}</td>
+      <td>{{ standingInfo.all.draw }}</td>
       <td>TODO</td>
-      <td>{{ standinginfo.points }}</td>
+      <td>{{ standingInfo.points }}</td>
     </tr>
   </tbody>
 </table>

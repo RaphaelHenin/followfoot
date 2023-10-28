@@ -4,7 +4,7 @@
 <div *ngFor="let country of countries">
   <a
     id="{{ country | lowercase }}Select"
-    routerLink="leaderboard/{{ country }}"
+    routerLink="leaderboard/{{ country | lowercase }}"
     >{{ country }}</a
   >
 </div>

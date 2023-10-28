@@ -23,4 +23,12 @@ export class FootballApiService {
         )
       );
   }
+
+  getLeagueId(leagueName: string, country: string): Observable<number> {
+    return this.httpClient
+      .get<GenericResponseDto>(
+        `${this.BASE_PATH}/leagues?country=${country}&name=${leagueName}`
+      )
+      .pipe(map((genericResponse) => genericResponse.response[0].league.id));
+  }
 }

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FootballApiService } from 'src/app/services/football-api/football-api.service';
 
 @Component({
   selector: 'app-leaderboard',
@@ -8,15 +7,10 @@ import { FootballApiService } from 'src/app/services/football-api/football-api.s
   styleUrls: ['./leaderboard.component.css'],
 })
 export class LeaderboardComponent implements OnInit {
-  private currentDate = new Date();
-  public standing$ = this.footballApiService.getStandings(
-    39,
-    this.currentDate.getFullYear()
-  );
-  constructor(
-    private footballApiService: FootballApiService,
-    private actRoute: ActivatedRoute
-  ) {}
+  public majorLeagueData = this.actRoute.snapshot.data['majorLeagueData'];
+  constructor(private actRoute: ActivatedRoute) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.majorLeagueData);
+  }
 }
