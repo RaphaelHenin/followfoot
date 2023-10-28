@@ -5,7 +5,7 @@ import {
   RouterStateSnapshot,
 } from '@angular/router';
 import { mergeMap, Observable, of } from 'rxjs';
-import { MajorLeagueData } from 'src/app/models/major-league-data';
+import { MajorLeagueData } from '../../models/major-league-data';
 import { CacheService } from '../cache/cache.service';
 import { Standing } from '../football-api/dtos/standing';
 import { FootballApiService } from '../football-api/football-api.service';

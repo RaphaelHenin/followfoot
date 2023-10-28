@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CacheService } from 'src/app/services/cache/cache.service';
+import { CacheService } from '../../services/cache/cache.service';
 
 @Component({
   selector: 'app-leaderboard',

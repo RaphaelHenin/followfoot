@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { MajorLeagueData } from 'src/app/models/major-league-data';
+import { MajorLeagueData } from '../../models/major-league-data';
 import { Standing } from '../football-api/dtos/standing';
 
 @Injectable({

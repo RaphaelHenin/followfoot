@@ -5,7 +5,7 @@ const routes: Routes = [
   {
     path: 'leaderboard/:country',
     loadChildren: () =>
-      import('src/app/features/standing/standing.module').then(
+      import('./features/standing/standing.module').then(
         (m) => m.StandingModule
       ),
   },
