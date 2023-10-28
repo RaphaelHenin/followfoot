@@ -18,9 +18,14 @@ export class FootballApiService {
         `${this.BASE_PATH}/standings?league=${idLeague}&season=${season}`
       )
       .pipe(
-        map(
-          (genericResponse) => genericResponse.response[0].league.standings[0]
-        )
+        map((genericResponse) => {
+          let standings = new Array(
+            ...genericResponse.response[0].league.standings[0]
+          );
+          this.orderRank(standings);
+          this.addGoaldDifference(standings);
+          return standings;
+        })
       );
   }
 
@@ -31,4 +36,26 @@ export class FootballApiService {
       )
       .pipe(map((genericResponse) => genericResponse.response[0].league.id));
   }
+
+  /**
+   * Function that calculate and add the goal difference to each Standing object of the array
+   * @param standings array of standing object
+   */
+  private addGoaldDifference = (standings: Standing[]) => {
+    standings.forEach(
+      (standing) =>
+        (standing.goalsDiff =
+          standing.all.goals.for - standing.all.goals.against)
+    );
+  };
+
+  /**
+   * Function that sort the standing array by rank (to ensure the display)
+   * @param standings array of standing object
+   */
+  private orderRank = (standings: Standing[]) => {
+    standings.sort((a, b) => {
+      return a.rank === b.rank ? 0 : a.rank < b.rank ? -1 : 1;
+    });
+  };
 }

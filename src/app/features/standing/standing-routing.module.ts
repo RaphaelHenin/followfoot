@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CountryMajorLeagueDataResolver } from 'src/app/services/resolver/country-major-league-data.resolver';
-import { LeaderboardComponent } from './leaderboard.component';
+import { StandingComponent } from './standing.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: LeaderboardComponent,
+    component: StandingComponent,
     resolve: { majorLeagueData: CountryMajorLeagueDataResolver },
   },
   {
@@ -22,4 +22,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class LeaderboardRoutingModule {}
+export class StandingRoutingModule {}

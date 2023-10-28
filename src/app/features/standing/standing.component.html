@@ -1,0 +1,30 @@
+<ng-container *ngIf="majorLeagueInfo$ | async as majorLeagueInfo">
+  <h1>Standing for {{ majorLeagueInfo.leagueName }}</h1>
+  <table id="standing">
+    <thead>
+      <tr>
+        <th colspan="2"></th>
+        <th>Name</th>
+        <th>Games</th>
+        <th>W</th>
+        <th>L</th>
+        <th>D</th>
+        <th>Goal Difference</th>
+        <th>Points</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let standingInfo of majorLeagueInfo.standings">
+        <td>{{ standingInfo.rank }}</td>
+        <td><img [src]="standingInfo.team.logo" /></td>
+        <td>{{ standingInfo.team.name }}</td>
+        <td>{{ standingInfo.all.played }}</td>
+        <td>{{ standingInfo.all.win }}</td>
+        <td>{{ standingInfo.all.lose }}</td>
+        <td>{{ standingInfo.all.draw }}</td>
+        <td>{{ standingInfo.goalsDiff }}</td>
+        <td>{{ standingInfo.points }}</td>
+      </tr>
+    </tbody>
+  </table>
+</ng-container>

@@ -5,6 +5,7 @@ import {
   RouterStateSnapshot,
 } from '@angular/router';
 import { mergeMap, Observable, of } from 'rxjs';
+import { MajorLeagueData } from 'src/app/models/major-league-data';
 import { CacheService } from '../cache/cache.service';
 import { Standing } from '../football-api/dtos/standing';
 import { FootballApiService } from '../football-api/football-api.service';
@@ -22,39 +23,33 @@ export class CountryMajorLeagueDataResolver
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<
-    | {
-        idLeague: number;
-        leagueName: string;
-        standings: Standing[];
-      }
-    | undefined
-  > {
-    let country = route.params['country'];
-    if (this.cacheService.get(country)) {
-      return of(this.cacheService.get(country));
+  ): Observable<MajorLeagueData> {
+    let countryParam = route.params['country'];
+    const cacheMajorLeagueInfo = this.cacheService.get(countryParam);
+    if (cacheMajorLeagueInfo) {
+      return of(cacheMajorLeagueInfo);
     }
     let majorLeagueData = {
       idLeague: 0,
       leagueName: '',
       standings: [] as Standing[],
     };
-    return this.footballApiService
-      .getLeagueId(getMajorLeague(country), country)
-      .pipe(
-        mergeMap((idLeague) => {
-          majorLeagueData.idLeague = idLeague;
-          return this.footballApiService
-            .getStandings(idLeague, new Date().getFullYear())
-            .pipe(
-              mergeMap((standings) => {
-                majorLeagueData.standings = standings;
-                this.cacheService.set(country, majorLeagueData);
-                return of(this.cacheService.get(country));
-              })
-            );
-        })
-      );
+    const leagueName = getMajorLeague(countryParam);
+    return this.footballApiService.getLeagueId(leagueName, countryParam).pipe(
+      mergeMap((idLeague) => {
+        majorLeagueData.leagueName = leagueName;
+        majorLeagueData.idLeague = idLeague;
+        return this.footballApiService
+          .getStandings(idLeague, new Date().getFullYear())
+          .pipe(
+            mergeMap((standings) => {
+              majorLeagueData.standings = standings;
+              this.cacheService.set(countryParam, majorLeagueData);
+              return of(this.cacheService.get(countryParam)!);
+            })
+          );
+      })
+    );
   }
 }
 
