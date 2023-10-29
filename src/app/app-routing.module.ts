@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'leaderboard/:country',
+    path: 'standing/:country',
     loadChildren: () =>
       import('./features/standing/standing.module').then(
         (m) => m.StandingModule

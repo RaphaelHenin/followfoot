@@ -14,6 +14,6 @@ export class StandingComponent implements OnInit {
   ngOnInit(): void {}
 
   displayLastGames(teamId: number) {
-    this.router.navigate(['last-scores', teamId]);
+    this.router.navigate([this.router.url, 'last-scores', teamId]);
   }
 }

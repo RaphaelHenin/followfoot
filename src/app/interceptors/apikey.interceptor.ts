@@ -3,7 +3,6 @@ import {
   HttpHandler,
   HttpInterceptor,
   HttpRequest,
-  HttpResponse,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
@@ -25,13 +24,13 @@ export class ApikeyInterceptor implements HttpInterceptor {
       });
       return next.handle(reqWithApiKey).pipe(
         map((response) => {
-          if (
+          /*if (
             response instanceof HttpResponse &&
             response.status === 200 &&
             response.body?.errors
           ) {
             alert(response.body?.errors?.requests);
-          }
+          }*/
           return response;
         })
       );
