@@ -10,7 +10,7 @@ const routes: Routes = [
     resolve: { majorLeagueData: CountryMajorLeagueDataResolver },
   },
   {
-    path: ':team/last-scores',
+    path: 'last-scores/:team',
     loadChildren: () =>
       import('../last-scores/last-scores.module').then(
         (m) => m.LastScoresModule

@@ -14,7 +14,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let standingInfo of majorLeagueInfo.standings">
+      <tr
+        *ngFor="let standingInfo of majorLeagueInfo.standings"
+        (click)="displayLastGames(standingInfo.team.id)"
+      >
         <td>{{ standingInfo.rank }}</td>
         <td><img [src]="standingInfo.team.logo" /></td>
         <td>{{ standingInfo.team.name }}</td>

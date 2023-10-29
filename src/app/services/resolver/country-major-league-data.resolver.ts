@@ -14,7 +14,7 @@ import { FootballApiService } from '../football-api/football-api.service';
   providedIn: 'root',
 })
 export class CountryMajorLeagueDataResolver
-  implements Resolve<Observable<any>>
+  implements Resolve<Observable<MajorLeagueData>>
 {
   constructor(
     private cacheService: CacheService,

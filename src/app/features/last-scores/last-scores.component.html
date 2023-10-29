@@ -1,1 +1,11 @@
-<p>last-scores works!</p>
+<ng-container *ngFor="let gameResult of lastestGameResult">
+  <div>
+    <div id="logoTeamHome">{{ gameResult.teams.home.logo }}</div>
+    <div id="nameTeamHome">{{ gameResult.teams.home.name }}</div>
+    <div id="goalTeamHome">{{ gameResult.goals.home }}</div>
+    -
+    <div id="goalTeamAway">{{ gameResult.goals.away }}</div>
+    <div id="nameTeamAway">{{ gameResult.teams.away.name }}</div>
+    <div id="logoTeamAway">{{ gameResult.teams.away.logo }}</div>
+  </div>
+</ng-container>

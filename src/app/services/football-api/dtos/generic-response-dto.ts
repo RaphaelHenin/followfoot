@@ -1,3 +1,4 @@
+import { FixtureResponseDto } from './fixture-response-dto';
 import { StandingResponseDto } from './standing-response-dto';
 
 export interface GenericResponseDto {
@@ -6,5 +7,5 @@ export interface GenericResponseDto {
   errors: string[] | {};
   results: number;
   paging: { current: string; total: string };
-  response: Array<StandingResponseDto>;
+  response: Array<StandingResponseDto | FixtureResponseDto>;
 }

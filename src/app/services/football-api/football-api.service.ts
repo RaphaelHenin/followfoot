@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
+import { FixtureResponseDto } from './dtos/fixture-response-dto';
 import { GenericResponseDto } from './dtos/generic-response-dto';
 import { Standing } from './dtos/standing';
+import { StandingResponseDto } from './dtos/standing-response-dto';
 
 @Injectable({
   providedIn: 'root',
@@ -19,12 +21,15 @@ export class FootballApiService {
       )
       .pipe(
         map((genericResponse) => {
-          let standings = new Array(
-            ...genericResponse.response[0].league.standings[0]
-          );
-          this.orderRank(standings);
-          this.addGoaldDifference(standings);
-          return standings;
+          if (isStandingResponseDtoType(genericResponse.response)) {
+            let standings = new Array(
+              ...genericResponse.response[0].league.standings[0]
+            );
+            this.orderRank(standings);
+            this.addGoaldDifference(standings);
+            return standings;
+          }
+          return [];
         })
       );
   }
@@ -34,7 +39,33 @@ export class FootballApiService {
       .get<GenericResponseDto>(
         `${this.BASE_PATH}/leagues?country=${country}&name=${leagueName}`
       )
-      .pipe(map((genericResponse) => genericResponse.response[0].league.id));
+      .pipe(
+        map((genericResponse) => {
+          if (isStandingResponseDtoType(genericResponse.response)) {
+            return genericResponse.response[0].league.id;
+          }
+          return -1;
+        })
+      );
+  }
+
+  getLatestGameResults(
+    teamId: string,
+    season: number,
+    nbLastGame: number
+  ): Observable<FixtureResponseDto[]> {
+    return this.httpClient
+      .get<GenericResponseDto>(
+        `${this.BASE_PATH}/fixtures?team=${teamId}&season=${season}&last=${nbLastGame}`
+      )
+      .pipe(
+        map((genericResponse) => {
+          if (isFixtureResponseDtoType(genericResponse.response)) {
+            return genericResponse.response;
+          }
+          return [];
+        })
+      );
   }
 
   /**
@@ -58,4 +89,16 @@ export class FootballApiService {
       return a.rank === b.rank ? 0 : a.rank < b.rank ? -1 : 1;
     });
   };
+}
+
+function isStandingResponseDtoType(
+  param: (StandingResponseDto | FixtureResponseDto)[]
+): param is StandingResponseDto[] {
+  return 'league' in param[0];
+}
+
+function isFixtureResponseDtoType(
+  param: (StandingResponseDto | FixtureResponseDto)[]
+): param is FixtureResponseDto[] {
+  return 'team' in param[0];
 }
