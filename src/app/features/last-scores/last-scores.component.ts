@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FixtureResponseDto } from '../../services/football-api/dtos/fixture-response-dto';
 
 @Component({
   selector: 'app-last-scores',
@@ -8,10 +7,13 @@ import { FixtureResponseDto } from '../../services/football-api/dtos/fixture-res
   styleUrls: ['./last-scores.component.css'],
 })
 export class LastScoresComponent implements OnInit {
-  public lastestGameResult: FixtureResponseDto[];
-  constructor(private actRoute: ActivatedRoute) {
+  backToStandingOf(arg0: any) {
+    throw new Error('Method not implemented.');
+  }
+  public lastestGameResult: any;
+  constructor(private actRoute: ActivatedRoute) {}
+
+  ngOnInit(): void {
     this.lastestGameResult = this.actRoute.snapshot.data['latestGameResults'];
   }
-
-  ngOnInit(): void {}
 }

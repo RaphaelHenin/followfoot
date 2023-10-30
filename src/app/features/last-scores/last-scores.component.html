@@ -1,11 +1,18 @@
-<ng-container *ngFor="let gameResult of lastestGameResult">
-  <div>
-    <div id="logoTeamHome">{{ gameResult.teams.home.logo }}</div>
+<div id="latestResultsBoard">
+  <div *ngFor="let gameResult of lastestGameResult">
+    <div id="logoTeamHome"><img [src]="gameResult.teams.home.logo" /></div>
     <div id="nameTeamHome">{{ gameResult.teams.home.name }}</div>
     <div id="goalTeamHome">{{ gameResult.goals.home }}</div>
     -
     <div id="goalTeamAway">{{ gameResult.goals.away }}</div>
     <div id="nameTeamAway">{{ gameResult.teams.away.name }}</div>
-    <div id="logoTeamAway">{{ gameResult.teams.away.logo }}</div>
+    <div id="logoTeamAway"><img [src]="gameResult.teams.away.logo" /></div>
   </div>
-</ng-container>
+</div>
+<button
+  id="backToStanding"
+  class="btn btn-primary w-50 mx-auto mt-3"
+  [routerLink]="['/standing', lastestGameResult[0].league.country | lowercase]"
+>
+  Back
+</button>

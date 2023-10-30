@@ -54,18 +54,23 @@ export class FootballApiService {
     season: number,
     nbLastGame: number
   ): Observable<FixtureResponseDto[]> {
-    return this.httpClient
-      .get<GenericResponseDto>(
-        `${this.BASE_PATH}/fixtures?team=${teamId}&season=${season}&last=${nbLastGame}`
-      )
-      .pipe(
-        map((genericResponse) => {
-          if (isFixtureResponseDtoType(genericResponse.response)) {
-            return genericResponse.response;
-          }
-          return [];
-        })
-      );
+    return (
+      this.httpClient
+        // .get<GenericResponseDto>(
+        //   `${this.BASE_PATH}/fixtures?team=${teamId}&season=${season}&last=${nbLastGame}`
+        // )
+        .get<GenericResponseDto>(
+          'app/services/football-api/mocks/ten-last-games-tottenham.json'
+        )
+        .pipe(
+          map((genericResponse) => {
+            if (isFixtureResponseDtoType(genericResponse.response)) {
+              return genericResponse.response;
+            }
+            return [];
+          })
+        )
+    );
   }
 
   /**
@@ -100,5 +105,5 @@ function isStandingResponseDtoType(
 function isFixtureResponseDtoType(
   param: (StandingResponseDto | FixtureResponseDto)[]
 ): param is FixtureResponseDto[] {
-  return 'team' in param[0];
+  return 'teams' in param[0];
 }
