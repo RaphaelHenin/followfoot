@@ -1,0 +1,7 @@
+<div *ngFor="let country of countries">
+  <a
+    id="{{ country | lowercase }}Select"
+    routerLink="standing/{{ country | lowercase }}"
+    >{{ country }}</a
+  >
+</div>

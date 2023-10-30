@@ -1,4 +1,4 @@
-<ng-container *ngIf="majorLeagueInfo$ | async as majorLeagueInfo">
+<div *ngIf="majorLeagueInfo$ | async as majorLeagueInfo">
   <h1>Standing for {{ majorLeagueInfo.leagueName }}</h1>
   <table id="standing">
     <thead>
@@ -30,4 +30,4 @@
       </tr>
     </tbody>
   </table>
-</ng-container>
+</div>

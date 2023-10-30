@@ -9,10 +9,16 @@
     <div id="logoTeamAway"><img [src]="gameResult.teams.away.logo" /></div>
   </div>
 </div>
-<button
-  id="backToStanding"
-  class="btn btn-primary w-50 mx-auto mt-3"
-  [routerLink]="['/standing', lastestGameResult[0].league.country | lowercase]"
->
-  Back
-</button>
+
+<div class="text-center">
+  <button
+    id="backToStanding"
+    class="btn btn-primary w-50 mt-3"
+    [routerLink]="[
+      '/standing',
+      lastestGameResult[0].league.country | lowercase
+    ]"
+  >
+    Back
+  </button>
+</div>

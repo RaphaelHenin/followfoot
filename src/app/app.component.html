@@ -1,12 +1,8 @@
-<h1>FOLLOW FOOT</h1>
-<p>Get updated of the main league of the 5 countries below :</p>
+<div id="main-body" class="d-flex flex-column align-items-center">
+  <h1>FOLLOW FOOT</h1>
+  <p>Get updated of the main league of the 5 countries below :</p>
 
-<div *ngFor="let country of countries">
-  <a
-    id="{{ country | lowercase }}Select"
-    routerLink="standing/{{ country | lowercase }}"
-    >{{ country }}</a
-  >
+  <app-country-navbar [countries]="countries"></app-country-navbar>
+
+  <router-outlet></router-outlet>
 </div>
-
-<router-outlet></router-outlet>
