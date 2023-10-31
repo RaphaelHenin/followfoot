@@ -1,7 +1,11 @@
-<div *ngFor="let country of countries">
-  <a
-    id="{{ country | lowercase }}Select"
-    routerLink="standing/{{ country | lowercase }}"
-    >{{ country }}</a
-  >
+<div id="button-navbar" class="m-3 d-flex">
+  <ng-container *ngFor="let country of countries">
+    <button
+      class="border py-2"
+      id="{{ country | lowercase }}Select"
+      [routerLink]="['standing', country | lowercase]"
+    >
+      <strong>{{ country }}</strong>
+    </button>
+  </ng-container>
 </div>

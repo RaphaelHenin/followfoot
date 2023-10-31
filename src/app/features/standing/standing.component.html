@@ -18,15 +18,21 @@
         *ngFor="let standingInfo of majorLeagueInfo.standings"
         (click)="displayLastGames(standingInfo.team.id)"
       >
-        <td>{{ standingInfo.rank }}</td>
+        <td>
+          <strong>{{ standingInfo.rank }}</strong>
+        </td>
         <td><img [src]="standingInfo.team.logo" /></td>
-        <td>{{ standingInfo.team.name }}</td>
+        <td>
+          <strong>{{ standingInfo.team.name }}</strong>
+        </td>
         <td>{{ standingInfo.all.played }}</td>
         <td>{{ standingInfo.all.win }}</td>
         <td>{{ standingInfo.all.lose }}</td>
         <td>{{ standingInfo.all.draw }}</td>
         <td>{{ standingInfo.goalsDiff }}</td>
-        <td>{{ standingInfo.points }}</td>
+        <td>
+          <strong>{{ standingInfo.points }}</strong>
+        </td>
       </tr>
     </tbody>
   </table>

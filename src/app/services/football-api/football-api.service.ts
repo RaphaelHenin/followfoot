@@ -56,12 +56,12 @@ export class FootballApiService {
   ): Observable<FixtureResponseDto[]> {
     return (
       this.httpClient
-        // .get<GenericResponseDto>(
-        //   `${this.BASE_PATH}/fixtures?team=${teamId}&season=${season}&last=${nbLastGame}`
-        // )
         .get<GenericResponseDto>(
-          'app/services/football-api/mocks/ten-last-games-tottenham.json'
+          `${this.BASE_PATH}/fixtures?team=${teamId}&season=${season}&last=${nbLastGame}`
         )
+        // .get<GenericResponseDto>(
+        //   'app/services/football-api/mocks/ten-last-games-tottenham.json'
+        // )
         .pipe(
           map((genericResponse) => {
             if (isFixtureResponseDtoType(genericResponse.response)) {

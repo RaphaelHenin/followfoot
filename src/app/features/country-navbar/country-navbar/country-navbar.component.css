@@ -1,0 +1,27 @@
+:host{
+  width: 70%
+}
+/* Pour mobile */
+@media screen and (max-width: 760px) {
+  :host {
+    width: 100%;
+  }
+}
+#button-navbar button:first-of-type{
+  border-top-left-radius: 1em;
+  border-bottom-left-radius: 1em;
+}
+
+#button-navbar button:last-of-type{
+  border-top-right-radius: 1em;
+  border-bottom-right-radius: 1em;
+}
+
+#button-navbar button{
+  width: 20%;
+  background-color: rgba(0, 152, 121, 0.4);
+}
+
+#button-navbar button:hover{
+  background-color: rgba(0, 152, 121, 0.7);
+}

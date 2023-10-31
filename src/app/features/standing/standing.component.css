@@ -7,16 +7,16 @@
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 #standing thead tr {
-  background-color: #009879;
-  color: #ffffff;
+  background-color: rgba(0, 152, 121, 0.4);
+  color: black;
   text-align: left;
 }
 
 #standing th,
 #standing td {
     padding: 12px 15px;
-    border-left: 1px solid #009851;
-    border-right: 1px solid #009879;
+    border-left: 1px solid rgba(0, 152, 121, 0.4);
+    border-right: 1px solid rgba(0, 152, 121, 0.4);
 }
 
 #standing tbody tr {
@@ -28,14 +28,14 @@
 }
 
 #standing tbody tr:last-of-type {
-  border-bottom: 2px solid #009879;
+  border-bottom: 2px solid rgba(0, 152, 121, 0.4);
 }
 
 #standing tbody tr:hover {
-  color: #009879;
+  color: rgba(0, 152, 121, 0.4);
 }
 
 #standing img{
-  width: 75px;
+  width: 50px;
   height: auto;
 }
