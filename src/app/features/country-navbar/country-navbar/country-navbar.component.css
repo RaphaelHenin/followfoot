@@ -24,4 +24,5 @@
 
 #button-navbar button:hover{
   background-color: rgba(0, 152, 121, 0.7);
+  cursor: pointer;
 }
