@@ -33,6 +33,7 @@
 
 #standing tbody tr:hover {
   color: rgba(0, 152, 121, 0.4);
+  cursor: pointer;
 }
 
 #standing img{

@@ -2,26 +2,46 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.
 
-## Development server
+## Project for Angular level 2 certification
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Features implemented :
 
-## Code scaffolding
+#### Navigation bar for country selection
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+When selecting a country, two options are requested
 
-## Build
+- Retrieve the main league ID of the selected country
+- With the league ID, retrieve the ranking
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+The results of these APIs are stored in the cache (Map and Behaviour Subject) to limit queries.
 
-## Running unit tests
+These requests are triggered by a resolver, so we're sure to have data when displaying the standings.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+#### Display the current season's standings for the main league in the selected country
 
-## Running end-to-end tests
+The main leagues we want to track for each country are as follows:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- England = Premier League
+- Spain = La Liga
+- France = Ligue 1
+- Germany = Bundesliga
+- Italy = Serie A
 
-## Further help
+The ranking must show :
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- team name
+- team logo
+- number of matches played
+- wins (W)
+- defeats (L)
+- draws (D)
+- goal difference (GD)
+- number of points (pts)
+
+A cursor appears when hovering over a team line to access the next function.
+
+#### Displays the last ten matches of the selected team.
+
+Using resolver, the fixture api is called to retrieve the scores of the last 10 matches of the selected team.
+
+A "Back" button is available to return to the previous standing
