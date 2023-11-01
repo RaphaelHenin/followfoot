@@ -5,7 +5,7 @@ import {
   HttpRequest,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class ApikeyInterceptor implements HttpInterceptor {
@@ -22,18 +22,7 @@ export class ApikeyInterceptor implements HttpInterceptor {
       const reqWithApiKey = req.clone({
         setHeaders: { 'x-apisports-key': this.API_KEY },
       });
-      return next.handle(reqWithApiKey).pipe(
-        map((response) => {
-          /*if (
-            response instanceof HttpResponse &&
-            response.status === 200 &&
-            response.body?.errors
-          ) {
-            alert(response.body?.errors?.requests);
-          }*/
-          return response;
-        })
-      );
+      return next.handle(reqWithApiKey);
     }
     return next.handle(req);
   }
