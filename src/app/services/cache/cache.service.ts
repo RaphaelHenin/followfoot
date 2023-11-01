@@ -23,7 +23,7 @@ export class CacheService {
     console.log(key);
     console.log(data);
     this.cache.set(key, data);
-    this.cache$.next(this.cache.get(key) as MajorLeagueData);
+    this.cache$.next(this.cache.get(key)!);
   }
 
   get(key: string): MajorLeagueData | undefined {
